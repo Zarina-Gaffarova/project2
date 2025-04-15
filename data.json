@@ -1,0 +1,18 @@
+[
+    {
+         "link": "credits.html",
+         "title": "Кредиты"
+     },
+     {
+         "link": "insurance.html",
+         "title": "Страхование"
+     },
+     {
+         "link": "mortgage.html",
+         "title": "Ипотека"
+     },
+     {
+         "link": "index.html",
+         "title": "Главная"
+     }
+ ]

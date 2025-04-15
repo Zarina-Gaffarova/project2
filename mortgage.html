@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ипотека</title>
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+   <!-- Шапка -->
+<header class="header container">
+    <img class="header__logo" src="images/logo.png" alt="Логотип банка НЭФ" width="150">
+    <h1 class="header__bank-name">Новая эра финансов</h1>
+    <nav class="header__nav">
+        <ul class="nav__list">
+            <!--<li class="nav__item"><a class="nav__link" href="credits.html">Кредиты</a></li>
+            <li class="nav__item"><a class="nav__link" href="insurance.html">Страхование</a></li>
+            <li class="nav__item"><a class="nav__link" href="mortgage.html">Ипотека</a></li>
+            <li class="nav__item"><a class="nav__link" href="index.html">Главная</a></li>-->
+        </ul>
+    </nav>
+    <div class="header__auth">
+        <a class="auth__link auth__link--primary"  id="button-login" href="#">Вход</a>
+        <a class="auth__link auth__link--primary"  id="button-reg" href="#">Регистрация</a>  
+    </div>
+</header>
+
+    <!-- Основной контент -->
+    <main class="mortgage container">
+        <h2 class="offers__title">Наши ипотечные предложения</h2>
+        <div class="offers__grid">
+            <!-- Ипотека для IT -->
+            <section class="offer__card card-js">
+                <img class="offer__image image-js" src="images/x1_Product-banner-_-IT-_-1424x984.png" alt="Ипотека для IT" width="150">
+                <h3 class="offer__name">Ипотека для IT</h3>
+                <div class="offer__description description-js" hidden>
+                <p>Ставка - от 6%</p>
+                <p>Срок - до 30 лет</p>
+                <p>Взнос - от 20%</p>
+            </div>
+                <button class="offer__button">Подробнее</button>
+            </section>
+
+            <!-- Семейная ипотека -->
+            <section class="offer__card card-js">
+                <img class="offer__image image-js" src="images/x1_Product-banner-_-Semei_naya-_-1424x984.png" alt="Семейная ипотека" width="150">
+                <h3 class="offer__name">Семейная ипотека</h3>
+                <div class="offer__description description-js" hidden>
+                <p>Ставка - от 5,3%</p>
+                <p>Срок - от 3 до 30 лет</p>
+                <p>Взнос - от 20%</p>
+            </div>
+                <button class="offer__button">Подробнее</button>
+            </section>
+
+            <!-- Ипотека для военнослужащих -->
+            <section class="offer__card  card-js">
+                <img class="offer__image image-js" src="images/soldier.png" alt="Ипотека для военнослужащих" width="130">
+                <h3 class="offer__name">Ипотека для военнослужащих</h3>
+                <div class="offer__description description-js" hidden>
+                <p >Ставка - от 6,75%</p>
+                <p >Срок - до 25 лет</p>
+                <p >Взнос - от 15%</p>
+            </div>
+                <button class="offer__button">Подробнее</button>
+            </section>
+        </div>
+   
+    <!-- Футер -->
+    <footer class="footer container">
+        <div class="footer__content container">
+            <p class="footer__text">© 2025 Банк НЭФ. Все права защищены.</p>
+            <ul class="footer__links">
+                <li><a class="footer__link" href="#">Политика конфиденциальности</a></li>
+                <li><a class="footer__link" href="#">Оферта</a></li>
+            </ul>
+        </div>
+    </footer>
+
+     <!-- Форма входа -->
+     <section class="login-form" id="form-login" hidden>
+        <form class="form">
+            <h2 class="form__title">Вход в личный кабинет</h2>
+            <input class="form__input" type="tel" name="phone" placeholder="Номер телефона" required autocomplete="tel">
+            <input class="form__input" type="password" name="password" placeholder="Пароль" required autocomplete="current-password">
+            <button class="form__button" type="submit">Войти</button>
+            <button type="button" id="closeLoginForm">Закрыть</button>
+        </form>
+    </section>
+<!-- Форма регистрации -->
+<section class="login-form" id="form-registration" hidden>
+    <h2 class="form__title registration">Регистрация</h2>
+    <form class="form" id="registrationForm" action="/register" method="POST">
+        <input class="form__input" type="text" name="name" placeholder="Имя" required autocomplete="name">
+        <input class="form__input" type="tel" name="phone" placeholder="Номер телефона" required autocomplete="tel">
+        <fieldset class="form__fieldset">
+            <div class="form__field-block">
+                <input class="form__input" type="password" name="password" placeholder="Пароль" required autocomplete="new-password">
+                <span class="form__field-alert">Минимум 8 символов</span>
+            </div>
+            <input class="form__input" type="password" name="repeat-password" placeholder="Повторите пароль" required autocomplete="new-password">
+        </fieldset>
+        <fieldset class="form__buttons">
+            <button class="button button--accent" type="submit">Зарегистрироваться</button>
+            <button class="button" type="button" id="cancelRegistration">Отмена</button>
+        </fieldset>
+        <button class="button button--link" type="button">У меня уже есть аккаунт</button>
+    </form>
+</section>
+<!--/ Форма "Регистрация" -->
+<script src="scripts/script.js"></script>
+</body>
+</html>
