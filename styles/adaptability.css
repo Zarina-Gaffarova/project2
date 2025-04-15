@@ -1,0 +1,24 @@
+@media only screen and (max-width: 1024px) {
+
+    
+    .container {
+        max-width: 100%;
+    }
+
+
+    .card__list {
+        flex-wrap: wrap;
+    }
+
+
+    
+    .header__menu {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 768px) {
+    .offers__grid {
+        flex-wrap: wrap; /* Перенос на новые строки на мобильных */
+    }
+}
