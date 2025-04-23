@@ -93,10 +93,10 @@
     <h2 class="form__title registration">Регистрация</h2>
     <form class="form" id="registrationForm" action="/register" method="POST">
         <input class="form__input" type="text" name="name" placeholder="Имя" required autocomplete="name">
-        <input class="form__input" type="tel" name="phone" placeholder="Номер телефона" required autocomplete="tel">
+        <input class="form__input" type="tel" name="phone" placeholder="Номер телефона" required autocomplete="tel" id="number">
         <fieldset class="form__fieldset">
             <div class="form__field-block">
-                <input class="form__input" type="password" name="password" placeholder="Пароль" required autocomplete="new-password">
+                <input class="form__input" type="password" name="password" placeholder="Пароль" required autocomplete="new-password" id="password">
                 <span class="form__field-alert">Минимум 8 символов</span>
             </div>
             <input class="form__input" type="password" name="repeat-password" placeholder="Повторите пароль" required autocomplete="new-password">

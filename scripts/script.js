@@ -2,7 +2,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
     console.log('Скрипт отработал корректно');
-    
+
 
     // Получаем элементы
     const loginButton = document.querySelector('#button-login'); // Кнопка "Вход"
@@ -30,32 +30,36 @@ document.addEventListener("DOMContentLoaded", () => {
 * Блок-схема: /images/block-schema-vhod.png
 */
 
-if (loginButton && loginForm) {
-    console.log('Элементы существуют');
+    if (loginButton && loginForm) {
+        console.log('Элементы существуют');
 
-    // Открытие модального окна при клике на кнопку "Войти"
-    loginButton.addEventListener('click', () => {
-        loginForm.removeAttribute('hidden');
-    });
+        // Открытие модального окна при клике на кнопку "Войти"
+        loginButton.addEventListener('click', () => {
+            loginForm.removeAttribute('hidden');
+            const loginnumber = loginForm.querySelector("#login-number");
+            const loginpassword = loginForm.querySelector("#login-password");
+            loginnumber.value = window.localStorage.getItem("number");
+            loginpassword.value = window.localStorage.getItem("password");
+        });
 
-    // Закрытие модального окна при клике на кнопку закрытия
-    const closeLoginForm = document.querySelector('#closeLoginForm'); 
-    if (closeLoginForm) {
-        closeLoginForm.addEventListener('click', () => {
-            loginForm.setAttribute('hidden', true);
+        // Закрытие модального окна при клике на кнопку закрытия
+        const closeLoginForm = document.querySelector('#closeLoginForm');
+        if (closeLoginForm) {
+            closeLoginForm.addEventListener('click', () => {
+                loginForm.setAttribute('hidden', true);
+            });
+        }
+
+        // Закрытие модального окна при клике вне его области
+        window.addEventListener('click', (event) => {
+            if (event.target === loginForm) {
+                loginForm.setAttribute('hidden', true);
+            }
         });
     }
+});
 
-    // Закрытие модального окна при клике вне его области
-    window.addEventListener('click', (event) => {
-        if (event.target === loginForm) {
-            loginForm.setAttribute('hidden', true);
-        }
-    });
-}
- });
-
- document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     console.log('Скрипт отработал корректно');
 
     /*
@@ -131,7 +135,26 @@ if (loginButton && loginForm) {
     } else {
         console.error('Элементы не найдены');
     }
+
+    // Отправка данных на форме регистрации
+    registrationModal.addEventListener('submit', event => {
+        event.preventDefault(); // Предотвращаем отправку формы
+
+
+        const number = registrationModal.querySelector('#number').value;
+        const password = registrationModal.querySelector('#password').value;
+
+        // Запишем логин
+        window.localStorage.setItem("number", number);
+        window.localStorage.setItem("password", password);
+
+        alert("Вы зарегистрировались")
+        // Очистка формы
+        // registrationModal.reset();
+    });
 });
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
     const scrollContainer = document.querySelector('.offers__grid');
@@ -187,23 +210,23 @@ const intensiveImg = document.querySelectorAll('.intensive__img');
 // item - текущее изображение, а index — его номер в массиве, начиная с 0
 intensiveImg.forEach((item, index) => {
 
-// Объявляем переменную intensiveText и сохраняем в нее все элементы с классом intensive__description, которые связаны с описаниями для изображений
+    // Объявляем переменную intensiveText и сохраняем в нее все элементы с классом intensive__description, которые связаны с описаниями для изображений
     const intensiveText = document.querySelectorAll('.intensive__description');
 
-// Когда курсор наводится на изображение (событие mouseenter), срабатывает обработчик события mouseenter:
+    // Когда курсор наводится на изображение (событие mouseenter), срабатывает обработчик события mouseenter:
     item.addEventListener('mouseenter', () => {
-	// Делаем изображение полупрозрачным
-      item.style.opacity = 0.5;
-	// И удаляем атрибут hidden и текст становится видимым
-      intensiveText[index].removeAttribute('hidden');
+        // Делаем изображение полупрозрачным
+        item.style.opacity = 0.5;
+        // И удаляем атрибут hidden и текст становится видимым
+        intensiveText[index].removeAttribute('hidden');
     });
 
-// Когда курсор убираем с изображения (событие mouseleave), срабатывает обработчик события mouseleave:
+    // Когда курсор убираем с изображения (событие mouseleave), срабатывает обработчик события mouseleave:
     item.addEventListener('mouseleave', () => {
-	// Изображение делаем непрозрачным
-      item.style.opacity = 1;
-	// И добавляем атрибут hidden и текст становится видимым
-      intensiveText[index].setAttribute('hidden', true);
+        // Изображение делаем непрозрачным
+        item.style.opacity = 1;
+        // И добавляем атрибут hidden и текст становится видимым
+        intensiveText[index].setAttribute('hidden', true);
     });
 });
 
@@ -222,7 +245,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // * 4. Конец
 
     const intensiveImg = document.querySelectorAll('.image-js');
-   
+
     intensiveImg.forEach((item, index) => {
         const intensiveText = document.querySelectorAll('.description-js');
         item.addEventListener('mouseenter', () => {
@@ -235,7 +258,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
-    
+
 /*
 //Объявляем переменную headerMenu и сохраняем в нее header__menu
 const headerMenu = document.querySelector('.header__nav');
@@ -289,61 +312,84 @@ if (headerMenu){
 console.log('Навигацинное меню создано с помощью javascript!');
 
 const cardsContainer = document.querySelector('.header__nav');
-    if (cardsContainer) {
-        const cardList = cardsContainer.querySelector('.nav__list');
+if (cardsContainer) {
+    const cardList = cardsContainer.querySelector('.nav__list');
 
-        // Пример URL для получения данных с сервера
-        const apiUrl = 'data.json';
+    // Пример URL для получения данных с сервера
+    const apiUrl = 'data.json';
 
-        // Функция для создания карточки
-        const createCard = (link, title) => {
+    // Функция для создания карточки
+    const createCard = (link, title) => {
 
-            // Шаблонные строки и подстановки
-            const card = `
+        // Шаблонные строки и подстановки
+        const card = `
 
                  <li class="nav__item"><a class="nav__link" href="${link}">${title}</a></li>
             `;
 
-            return card;
-        }
+        return card;
+    }
 
-        // Загрузка данных с сервера
-        fetch(apiUrl)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data); // Данные
-                console.log(typeof (data)); // Тип полученных данных
+    // Загрузка данных с сервера
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data); // Данные
+            console.log(typeof (data)); // Тип полученных данных
 
-                // for (const item in data) {
-                //     const card = data[item];
+            // for (const item in data) {
+            //     const card = data[item];
 
-                //     const cardElement = createCard(nav.link, nav.title);
-                //     cardList.insertAdjacentHTML('beforeend', cardElement);
-                // }
+            //     const cardElement = createCard(nav.link, nav.title);
+            //     cardList.insertAdjacentHTML('beforeend', cardElement);
+            // }
 
-                data.forEach(item => {
-                    const cardElement = createCard(item.link, item.title);
-                    cardList.insertAdjacentHTML('beforeend', cardElement);
-                });
-            })
-            .catch(error => {
-                console.error('Ошибка при загрузке данных:', error);
+            data.forEach(item => {
+                const cardElement = createCard(item.link, item.title);
+                cardList.insertAdjacentHTML('beforeend', cardElement);
             });
-    }
+        })
+        .catch(error => {
+            console.error('Ошибка при загрузке данных:', error);
+        });
+}
 
-    // Preloader страницы
-    const preloader = document.querySelector('.preloader');
-    const content = document.querySelector('.content');
-    if (preloader && content) {
-        setTimeout(() => {
-            // Скрываем прелоадер
-            preloader.style.opacity = '0';
-            preloader.style.visibility = 'hidden';
+// Preloader страницы
+const preloader = document.querySelector('.preloader');
+const content = document.querySelector('.content');
+if (preloader && content) {
+    setTimeout(() => {
+        // Скрываем прелоадер
+        preloader.style.opacity = '0';
+        preloader.style.visibility = 'hidden';
 
-            // Показываем контент
-            content.style.display = 'block';
+        // Показываем контент
+        content.style.display = 'block';
 
-            // Удаляем элемент из DOM
-            preloader.remove();
-        }, 3000); // Задержка 3 секунды
-    }
+        // Удаляем элемент из DOM
+        preloader.remove();
+    }, 3000); // Задержка 3 секунды
+}
+
+// Карусель (слайдер)
+const slider = document.querySelector('.swiper');
+
+if (slider) {
+    const swiper = new Swiper(slider, {
+        // Дополнительные параметры
+        slidesPerView: 2, // Количество слайдов на экране
+        spaceBetween: 30, // Расстояние между слайдами
+        loop: true,  // Зацикливание слайдов
+
+        // Пагинация
+        pagination: {
+            el: '.swiper-pagination',
+        },
+
+        // Навигационные стрелки
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+}

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Банк НЭФ</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/style.css">
 </head>
@@ -84,8 +85,8 @@
     <section class="login-form" id="form-login" hidden>
     <form class="form">
         <h2 class="form__title">Вход в личный кабинет</h2>
-        <input class="form__input" type="tel" name="phone" placeholder="Номер телефона" required autocomplete="tel">
-        <input class="form__input" type="password" name="password" placeholder="Пароль" required autocomplete="current-password">
+        <input class="form__input" type="tel" name="phone" placeholder="Номер телефона" required autocomplete="tel" id="login-number">
+        <input class="form__input" type="password" name="password" placeholder="Пароль" required autocomplete="current-password" id="login-password">
         <button class="form__button" type="submit">Войти</button>
         <button type="button" id="closeLoginForm">Закрыть</button>
     </form>
@@ -96,10 +97,10 @@
     <h2 class="form__title registration">Регистрация</h2>
     <form class="form" id="registrationForm" action="/register" method="POST">
         <input class="form__input" type="text" name="name" placeholder="Имя" required autocomplete="name">
-        <input class="form__input" type="tel" name="phone" placeholder="Номер телефона" required autocomplete="tel">
+        <input class="form__input" type="tel" name="phone" placeholder="Номер телефона" required autocomplete="tel" id="number">
         <fieldset class="form__fieldset">
             <div class="form__field-block">
-                <input class="form__input" type="password" name="password" placeholder="Пароль" required autocomplete="new-password">
+                <input class="form__input" type="password" name="password" placeholder="Пароль" required autocomplete="new-password" id="password">
                 <span class="form__field-alert">Минимум 8 символов</span>
             </div>
             <input class="form__input" type="password" name="repeat-password" placeholder="Повторите пароль" required autocomplete="new-password">
